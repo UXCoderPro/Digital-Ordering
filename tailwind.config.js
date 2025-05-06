@@ -1,0 +1,29 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        primary: "#F43F46", // Red
+        secondary: "#C9242A", // Dark Red
+        accent: "#FFC107", // Yellow accent
+        textDark: "#2F2222", //Text Color
+        textLight: "rgba(47,34,34,0.10)", //border
+        border: "#D3D3D3",
+        bgShade: "#F9F9F9",
+        // Add more as needed
+      },
+      backgroundImage: {
+        "promo-logo": "url('/src/assets/promo.png')",
+        "promo-bg": "url('/src/assets/bgpromo.png')",
+        "banner-gradient":
+          "linear-gradient(180deg,rgba(16,16,16,0.00)_0%,#101010_100%)",
+      },
+      fontFamily: {
+        sfDisplay: ["SF Pro Display", "-apple-system", "sans-serif"],
+        sfText: ["SF Pro Text", "-apple-system", "sans-serif"],
+      },
+    },
+  },
+  plugins: [],
+};
