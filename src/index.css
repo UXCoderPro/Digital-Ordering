@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-.swiper-pagination-bullet {
-  transition: all 0.3s ease;
+/* Fallback scrollbar hide for all browsers */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
-.swiper-pagination-bullet-active {
-  opacity: 1 !important;
-  background-color: #ef4444 !important; /* Tailwind red-500 */
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }

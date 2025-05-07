@@ -17,7 +17,9 @@ module.exports = {
         "promo-logo": "url('/src/assets/promo.png')",
         "promo-bg": "url('/src/assets/bgpromo.png')",
         "banner-gradient":
-          "linear-gradient(180deg,rgba(16,16,16,0.00)_0%,#101010_100%)",
+          "linear-gradient(180deg, rgba(16,16,16,0.00) 0%, #101010 100%)",
+        "custom-red-gradient":
+          "linear-gradient(92deg, #E01E26 0%, #FF9393 100%)",
       },
       fontFamily: {
         sfDisplay: ["SF Pro Display", "-apple-system", "sans-serif"],
@@ -25,5 +27,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

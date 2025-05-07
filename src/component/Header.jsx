@@ -8,6 +8,8 @@ import "swiper/css/autoplay";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
 
+import { BsSearchHeart } from "react-icons/bs";
+
 import coupon1 from "../assets/coupon1.jpg";
 import coupon2 from "../assets/coupon2.jpg";
 import coupon3 from "../assets/coupon3.jpg";
@@ -45,23 +47,7 @@ const Header = () => {
           T1 - 4 Pax
         </h1>
         <div className="flex justify-center items-center w-14 h-full cursor-pointer border border-border border-solid ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="-0.5 -0.5 16 16"
-            className="stroke-textDark fill-textDark"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            id="Search--Streamline-Tabler"
-            height={30}
-            width={30}
-          >
-            <desc>{"Search Streamline Icon: https://streamlinehq.com"}</desc>
-            <path
-              d="M1.875 6.25a4.375 4.375 0 1 0 8.75 0 4.375 4.375 0 1 0 -8.75 0"
-              strokeWidth={1}
-            />
-            <path d="m13.125 13.125 -3.75 -3.75" strokeWidth={1} />
-          </svg>
+          <BsSearchHeart className="text-textDark w-5 h-auto" />
         </div>
       </div>
       <Swiper
@@ -75,10 +61,10 @@ const Header = () => {
         {couponSlides.map((slide, index) => (
           <SwiperSlide key={index}>
             <div
-              className=" h-56 py-4 px-4 flex justify-center items-end bg-cover bg-center text-white"
+              className=" bg-banner-gradient h-56 py-4 px-4 flex justify-center items-end bg-cover bg-center text-white"
               style={{ backgroundImage: `url(${slide.image})` }}
             >
-              <div className="flex flex-col w-full  gap-0 justify-between items-start bg-banner-gradient">
+              <div className="flex flex-col w-full  gap-0 justify-between items-start ">
                 <h1 className="font-sfDisplay text-2xl font-semibold leading-normal">
                   {slide.title}
                 </h1>
@@ -89,7 +75,6 @@ const Header = () => {
             </div>
           </SwiperSlide>
         ))}
-        ,
       </Swiper>
     </div>
   );
