@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../component/Header";
 import Category from "../component/Category";
 import Cartico from "../component/Cartico";
 import Product from "../component/Product";
 
 const Menu = () => {
+  const [selectedcategory, setSelectedCategory] = useState("");
   return (
-    <div className="w-full">
+    <div className="w-full h-screen overflow-y-auto scrollbar-hide ">
       <Header />
-      <Category />
+      <Category
+        selected={selectedcategory}
+        onCategorySelect={setSelectedCategory}
+      />
 
-      <Product />
+      <Product scrollToCategory={selectedcategory} />
 
       <Cartico />
     </div>

@@ -1,37 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const categoryType = [
-  {
-    title: "For You",
-  },
-  {
-    title: "Chicken",
-  },
-  {
-    title: "Mutton",
-  },
-  {
-    title: "Beef",
-  },
-  {
-    title: "Briyani",
-  },
-  {
-    title: "Drinks",
-  },
-  {
-    title: "Meals",
-  },
-];
+import categoryType from "../data/CategoryInfo";
 
-const Category = () => {
-  const [selected, setSelected] = useState("");
+const Category = ({ onCategorySelect, selected }) => {
   return (
-    <div className="flex w-full  items-center font-sfDisplay text-xs font-medium leading-normal justify-start border-b border-solid border-b-border bg-bgShade px-4 overflow-hidden py-3 gap-3 overflow-x-auto whitespace-nowrap scrollbar-hide snap-x snap-mandatory scroll-smooth ">
+    <div className="flex sticky top-0 z-10 w-full  items-center font-sfDisplay text-xs font-medium leading-normal justify-start border-b border-solid border-b-border bg-bgShade px-4 overflow-hidden py-3 gap-3 overflow-x-auto whitespace-nowrap scrollbar-hide snap-x snap-mandatory scroll-smooth ">
       {categoryType.map((index) => (
         <button
           key={index.title}
-          onClick={() => setSelected(index.title)}
+          onClick={() => onCategorySelect(index.title)}
           className={`flex justify-center  items-center border border-solid  px-5 py-2 rounded-3xl shrink-0 cursor-pointer ${
             selected === index.title
               ? "bg-custom-red-gradient text-white border-0"

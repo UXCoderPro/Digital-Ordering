@@ -11,11 +11,17 @@ module.exports = {
         textLight: "rgba(47,34,34,0.10)", //border
         border: "#D3D3D3",
         bgShade: "#F9F9F9",
+        redShade: "#FFF8F8",
+        modifier: "#060749",
+        combo: "#492F06",
+        comboShade: "#593616",
+        modifierShade: "#161759",
         // Add more as needed
       },
       backgroundImage: {
         "promo-logo": "url('/src/assets/promo.png')",
         "promo-bg": "url('/src/assets/bgpromo.png')",
+        "account-bg": "url('/src/assets/bgAccount.svg')",
         "banner-gradient":
           "linear-gradient(180deg, rgba(16,16,16,0.00) 0%, #101010 100%)",
         "custom-red-gradient":
