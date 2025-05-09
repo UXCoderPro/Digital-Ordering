@@ -7,9 +7,9 @@ const Icon = ({
 }) => {
   return (
     <div
-      className={`flex w-10 h-10 justify-center items-center border border-border ${bgColor} backdrop-blur p-1 rounded-md border-solid`}
+      className={`flex w-8 h-8 justify-center items-center border border-border ${bgColor} backdrop-blur p-1 rounded-md border-solid`}
     >
-      <IconComponent className={`${iconColor} w-6 h-auto`} />
+      <IconComponent className={`${iconColor} w-4 h-auto`} />
     </div>
   );
 };

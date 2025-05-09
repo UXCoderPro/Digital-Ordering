@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { MdCall } from "react-icons/md";
 import { FaUserTie } from "react-icons/fa6";
 import brand from "../assets/brand.jpg";
@@ -8,8 +10,19 @@ import CrmInfo from "../component/account/CrmInfo";
 import { FaSackDollar } from "react-icons/fa6";
 import { FaHandHoldingDollar } from "react-icons/fa6";
 import { BiSolidCoupon } from "react-icons/bi";
+import { TiUser } from "react-icons/ti";
+import { GiMilkCarton } from "react-icons/gi";
+import { PiAddressBookFill } from "react-icons/pi";
+import { MdOutlineLogin } from "react-icons/md";
 
 const Account = () => {
+  const navigate = useNavigate();
+
+  const fadeInVariant = {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+  };
+
   return (
     <div className="bg-bgShade w-full h-screen overflow-y-auto scrollbar-hide px-4 ">
       <h2 className="text-textDark font-sfDisplay text-lg font-semibold leading-normal   mt-7 ">
@@ -65,6 +78,7 @@ const Account = () => {
           title="Credit"
           value="2500"
           valueColor="text-[#49be30]"
+          route="/account/Credit"
         />
         <CrmInfo
           icon={FaHandHoldingDollar}
@@ -73,6 +87,7 @@ const Account = () => {
           title="Points"
           value="150"
           valueColor="text-[#2196F3]"
+          route="/account/Points"
         />
         <CrmInfo
           icon={BiSolidCoupon}
@@ -81,8 +96,61 @@ const Account = () => {
           title="Coupon"
           value="10"
           valueColor="text-[#FFA64D]"
+          route="/account/Coupon"
         />
       </div>
+
+      <motion.div
+        className="flex mt-7 w-full h-auto flex-col gap-4 justify-between items-center shrink-0 border border-border bg-white px-5 py-3 rounded-lg"
+        initial="initial"
+        animate="animate"
+        variants={fadeInVariant}
+      >
+        {[
+          {
+            icon: GiMilkCarton,
+            title: "My Orders",
+            desc: "Review & Access Order History",
+            route: "/account/orders",
+          },
+          {
+            icon: TiUser,
+            title: "Personal Details",
+            desc: "Check your personal Details",
+            route: "/account/Profile",
+          },
+          {
+            icon: PiAddressBookFill,
+            title: "Address",
+            desc: "Organize & Maintain Delivery Address",
+            route: "/account/Address",
+          },
+          {
+            icon: MdOutlineLogin,
+            title: "Logout",
+            desc: "Logout from this Device",
+            route: "/account/Logout",
+          },
+        ].map(({ icon, title, desc, route }, index) => (
+          <motion.div
+            key={index}
+            className="w-full h-auto p-1 flex items-start justify-start gap-4 cursor-pointer"
+            whileTap={{ scale: 0.97 }}
+            whileHover={{ scale: 1.02 }}
+            onClick={() => navigate(route)}
+          >
+            <Icon icons={icon} bgColor="bg-redShade" iconColor="text-primary" />
+            <div className="flex flex-col gap-2">
+              <h1 className="text-textDark text-base font-sfDisplay font-semibold leading-normal">
+                {title}
+              </h1>
+              <p className="text-[#595959] font-sfText text-xs leading-normal font-normal">
+                {desc}
+              </p>
+            </div>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 };
