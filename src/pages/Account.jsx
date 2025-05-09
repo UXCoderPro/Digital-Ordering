@@ -24,7 +24,7 @@ const Account = () => {
   };
 
   return (
-    <div className="bg-bgShade w-full h-screen overflow-y-auto scrollbar-hide px-4 ">
+    <div className="bg-bgShade w-full h-screen overflow-y-auto scrollbar-hide px-4 pb-8">
       <h2 className="text-textDark font-sfDisplay text-lg font-semibold leading-normal   mt-7 ">
         My Account
       </h2>
