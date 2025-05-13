@@ -68,7 +68,7 @@ const Product = ({ scrollToCategory }) => {
                     transition={{ delay: index * 0.05, duration: 0.3 }}
                     className={`flex flex-col h-80 justify-between items-center gap-2 border ${
                       isActive ? "border-primary border-2" : "border-border"
-                    } border-solid rounded-2xl overflow-hidden ${
+                    } border-solid rounded-2xl overflow-hidden cursor-pointer ${
                       styles.container
                     }`}
                   >

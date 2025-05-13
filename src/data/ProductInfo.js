@@ -1,292 +1,206 @@
-import food from "../assets/1.jpg";
-import chukka from "../assets/chukka.jpg";
-import kalaki from "../assets/kalakki.jpg";
-import chicken from "../assets/chicken.jpg";
-import fried from "../assets/grill.jpg";
-import nalli from "../assets/nalli.jpg";
-import gravy from "../assets/mutton.jpg";
-import Cheese from "../assets/chesse.jpg";
+import wings from "../assets/product/Chicken/wings.jpg";
+import grill from "../assets/product/Chicken/grill-combo.jpg";
+import grillCombo from "../assets/product/Chicken/grill2.jpg";
+import curry from "../assets/product/Chicken/curry.jpg";
+import currySpicy from "../assets/product/Chicken/spicyCurry.jpg";
+import curryMild from "../assets/product/Chicken/mildCurry.jpg";
+import egg from "../assets/product/Chicken/egg.jpg";
+import extraCurry from "../assets/product/Chicken/extraCurry.jpg";
+import butter from "../assets/product/Chicken/butter.jpg";
+
+import mutton from "../assets/product/Mutton/mutton.jpg";
+import muttonCombo from "../assets/product/Mutton/muttonCombo.jpg";
+import muttonCoke from "../assets/product/Mutton/muttonCoke.jpg";
+import muttonMayo from "../assets/product/Mutton/muttonMayo.jpg";
+import muttonBriyani from "../assets/product/Mutton/muttonbriyani.jpg";
+import muttonCurry from "../assets/product/Mutton/mutton-curry.jpg";
+import muttonBone from "../assets/product/Mutton/muttonBone.jpg";
+import muttonBoneless from "../assets/product/Mutton/muttonBoneless.jpg";
+import fries from "../assets/product/Mutton/frenchFries.jpg";
+import food from "../assets/product/Mutton/frenchFries.jpg";
+import Cheese from "../assets/product/Mutton/frenchFries.jpg";
 
 const productInfo = [
+  // 🐔 Chicken
   {
     id: 1,
-    name: "Chicken Chukka",
-    cost: "$ 2.90",
-    image: chukka,
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
+    name: "Spicy Chicken Wings",
+    cost: "$3.50",
+    image: wings,
+    description: "Crispy and spicy chicken wings tossed in a hot sauce.",
+    category: "Chicken",
+  },
+  {
+    id: 2,
+    name: "Chicken Grill Combo",
+    cost: "$5.90",
+    image: grill,
+    description: "Grilled chicken served with fries, salad, and dip.",
+    category: "Chicken",
+    type: "Combo",
+    combo: [
+      {
+        name: "Choose your Combo Variations",
+        options: [
+          { name: "Grill + French Fries + Pepsi", price: "$0", cover: grill },
+          {
+            name: "Grill + Fries + Coke + Burger",
+            price: "$8.12",
+            cover: grillCombo,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Butter Chicken",
+    cost: "$4.75",
+    image: butter,
+    description: "Rich and creamy butter chicken cooked in tomato gravy.",
+    category: "Chicken",
+  },
+  {
+    id: 4,
+    name: "Chicken Curry",
+    cost: "$4.25",
+    image: curry,
+    description: "Aromatic chicken curry cooked with traditional spices.",
     category: "Chicken",
     type: "Modifier",
     modifiers: [
       {
         name: "Choose your Type",
         options: [
-          { name: "Gravy", price: 0, cover: Cheese },
-          { name: "Dry", price: 1, cover: Cheese },
+          { name: "Spicy", price: 0, cover: currySpicy },
+          { name: "Mild", price: 1, cover: curryMild },
         ],
       },
       {
         name: "Add-ons",
         options: [
-          { name: "Extra Spicy", price: 1, cover: Cheese },
-          { name: "Extra Mayo", price: 2, cover: Cheese },
+          { name: "Boiled Egg", price: 1, cover: egg },
+          { name: "Extra Gravy", price: 2, cover: extraCurry },
         ],
       },
     ],
   },
-  {
-    id: 2,
-    name: "Chicken Gravy",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.35",
-    image: chukka,
-    category: "Chicken",
-  },
-  {
-    id: 3,
-    name: "Chicken Grill",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.35",
-    image: chicken,
-    category: "Chicken",
-    type: "Combo",
-  },
-  {
-    id: 4,
-    name: "Fied Chicken",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.35",
-    image: fried,
-    category: "Chicken",
-    type: "Modifier",
-    modifiers: [
-      {
-        name: "Choose your Modz",
-        options: [
-          { name: "Bone less", price: 0, cover: Cheese },
-          { name: "With Bone", price: 1, cover: Cheese },
-        ],
-      },
-      {
-        name: "Add-ons",
-        options: [
-          { name: "Spicy Masala", price: 1, cover: Cheese },
-          { name: "Thousand Island", price: 2, cover: Cheese },
-        ],
-      },
-    ],
-  },
+
+  // 🐐 Mutton
   {
     id: 5,
-    name: "Mutton Kalaki",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 78.3",
-    image: kalaki,
+    name: "Mutton Sukka",
+    cost: "$6.80",
+    image: mutton,
+    description: "Dry-fried mutton cubes cooked in chettinad style.",
     category: "Mutton",
   },
   {
     id: 6,
-    name: "Mutton Nalli",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 78.3",
-    image: nalli,
+    name: "Mutton Combo Special",
+    cost: "$7.90",
+    image: muttonCombo,
+    description: "Mutton gravy, rice, egg, and side salad combo.",
     category: "Mutton",
+    type: "Combo",
+    combo: [
+      {
+        name: "Choose your Combo Variations",
+        options: [
+          { name: "Mutton Gravy + Coke", price: "$0", cover: muttonCoke },
+          {
+            name: "Mutton Chukka + mayo",
+            price: "$8.12",
+            cover: muttonMayo,
+          },
+        ],
+      },
+    ],
   },
   {
     id: 7,
-    name: "Mutton gravy",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 78.3",
-    image: gravy,
+    name: "Mutton Biryani",
+    cost: "$8.30",
+    image: muttonBriyani,
+    description: "Fragrant basmati rice with juicy mutton pieces.",
     category: "Mutton",
-    type: "Combo",
   },
   {
     id: 8,
-    name: "Mutton Grill",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 78.3",
-    image: food,
+    name: "Mutton Curry",
+    cost: "$7.40",
+    image: muttonCurry,
+    description: "Slow-cooked mutton in spicy red curry.",
     category: "Mutton",
-  },
-  {
-    id: 9,
-    name: "Beef Curry",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 12.32",
-    image: food,
-    category: "Beef",
     type: "Modifier",
     modifiers: [
       {
-        name: "Choose your type",
+        name: "Choose your Type",
         options: [
-          { name: "Dry", price: 0, cover: Cheese },
-          { name: "gravy", price: 1, cover: Cheese },
+          { name: "With Bone", price: 0, cover: muttonBone },
+          { name: "Boneless", price: 1, cover: muttonBoneless },
         ],
       },
       {
         name: "Add-ons",
         options: [
-          { name: "Extra Cheese", price: 1, cover: Cheese },
-          { name: "Extra Spicy", price: 2, cover: Cheese },
+          { name: "Extra Masala", price: 1, cover: muttonBone },
+          { name: "Potato Pieces", price: 2, cover: fries },
         ],
       },
     ],
+  },
+
+  // 🥩 Beef
+  {
+    id: 9,
+    name: "Beef Ularthiyathu",
+    cost: "$6.25",
+    image: food,
+    description: "Kerala-style beef fry with coconut slivers.",
+    category: "Beef",
   },
   {
     id: 10,
-    name: "Beef Chukka",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 12.32",
+    name: "Beef Meal Combo",
+    cost: "$7.25",
     image: food,
+    description: "Beef curry, rice, papad, and vegetable sides.",
     category: "Beef",
     type: "Combo",
   },
-  { id: 11, name: "Dry Beef", cost: "$ 12.32", image: food, category: "Beef" },
   {
-    id: 12,
-    name: "Beef Masala",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 12.32",
+    id: 11,
+    name: "Pepper Beef Roast",
+    cost: "$6.75",
     image: food,
+    description: "Spicy beef roast seasoned with black pepper.",
     category: "Beef",
   },
   {
-    id: 13,
-    name: "Chicken Briyani",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 1.25",
+    id: 12,
+    name: "Beef Curry",
+    cost: "$6.55",
     image: food,
-    category: "Briyani",
-  },
-  {
-    id: 14,
-    name: "Mutton briyani",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 1.25",
-    image: food,
-    category: "Briyani",
-  },
-  {
-    id: 15,
-    name: "Beef Briyani",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 1.25",
-    image: food,
-    category: "Briyani",
+    description: "Beef simmered in onion-tomato masala.",
+    category: "Beef",
     type: "Modifier",
     modifiers: [
       {
-        name: "Choose your type",
+        name: "Choose your Type",
         options: [
-          { name: "Mandi Type", price: 0, cover: Cheese },
-          { name: "Kerala type", price: 1, cover: Cheese },
+          { name: "Thick Gravy", price: 0, cover: Cheese },
+          { name: "Thin Gravy", price: 1, cover: Cheese },
         ],
       },
       {
         name: "Add-ons",
         options: [
-          { name: "Extra Spicy", price: 1, cover: Cheese },
-          { name: "Extra Sides", price: 2, cover: Cheese },
+          { name: "Extra Meat", price: 2, cover: Cheese },
+          { name: "Add Liver", price: 1.5, cover: Cheese },
         ],
       },
     ],
   },
-  {
-    id: 16,
-    name: "Naatu Kozhi briyani",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 1.25",
-    image: food,
-    category: "Briyani",
-  },
-  {
-    id: 17,
-    name: "Tuqilla Shot",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 2.65",
-    image: food,
-    category: "Drinks",
-  },
-  {
-    id: 18,
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    name: "Whisky",
-    cost: "$ 2.65",
-    image: food,
-    category: "Drinks",
-  },
-  {
-    id: 19,
-    name: "Lable Cocktail",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 2.65",
-    image: food,
-    category: "Drinks",
-  },
-  {
-    id: 20,
-    name: "Mango Cocktail",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 2.65",
-    image: food,
-    category: "Drinks",
-  },
-  {
-    id: 21,
-    name: "Non Veg Meals",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.36",
-    image: food,
-    category: "Meals",
-  },
-  {
-    id: 22,
-    name: "Special Meals",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.36",
-    image: food,
-    category: "Meals",
-  },
-  {
-    id: 23,
-    name: "Thaali Meals",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.36",
-    image: food,
-    category: "Meals",
-  },
-  {
-    id: 24,
-    name: "Fish Meals",
-    description:
-      "This refreshing Blue Mojito combines the classic flavors of mint, lime, and rum with a splash of blue curaçao for a vibrant twist. Perfect for summer gatherings, its striking blue color and invigorating taste make it a standout cocktail",
-    cost: "$ 4.36",
-    image: food,
-    category: "Meals",
-  },
 ];
-
 export default productInfo;
