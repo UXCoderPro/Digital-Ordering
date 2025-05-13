@@ -8,7 +8,7 @@ module.exports = {
         secondary: "#C9242A", // Dark Red
         accent: "#FFC107", // Yellow accent
         textDark: "#2F2222", //Text Color
-        textLight: "rgba(47,34,34,0.10)", //border
+        textLight: "#595959", //border
         border: "#D3D3D3",
         bgShade: "#F9F9F9",
         redShade: "#FFF8F8",

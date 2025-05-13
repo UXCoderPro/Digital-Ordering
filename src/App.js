@@ -17,6 +17,8 @@ import Credit from "./pages/account/Credit";
 import Points from "./pages/account/Points";
 import Coupon from "./pages/account/Coupon";
 
+import ProductDetail from "./pages/products/ProductDetail";
+
 function App() {
   const location = useLocation();
 
@@ -43,6 +45,8 @@ function App() {
           <Route path="/account/Credit" element={<Credit />} />
           <Route path="/account/Points" element={<Points />} />
           <Route path="/account/Coupon" element={<Coupon />} />
+
+          <Route path="/ProductInfo/:id" element={<ProductDetail />} />
         </Routes>
 
         {/* Show Navbar only on specific routes */}
