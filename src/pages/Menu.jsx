@@ -7,7 +7,7 @@ import Product from "../component/Product";
 const Menu = () => {
   const [selectedcategory, setSelectedCategory] = useState("");
   return (
-    <div className="w-full h-screen overflow-y-auto scrollbar-hide ">
+    <div className=" w-full h-screen overflow-y-auto scrollbar-hide ">
       <Header />
       <Category
         selected={selectedcategory}

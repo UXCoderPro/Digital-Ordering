@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import OutletPage from "./pages/Outlet";
 import MenuPage from "./pages/Menu";
@@ -18,8 +18,14 @@ import Points from "./pages/account/Points";
 import Coupon from "./pages/account/Coupon";
 
 function App() {
+  const location = useLocation();
+
+  // Define which routes should display the navbar
+  const navbarVisibleRoutes = ["/", "/outlet", "/account", "/more"];
+  const showNavbar = navbarVisibleRoutes.includes(location.pathname);
+
   return (
-    <div className="w-full min-h-screen overflow-scroll scrollbar-hide ">
+    <div className="w-full min-h-screen overflow-scroll scrollbar-hide">
       <div className="w-full h-full">
         <Routes>
           <Route path="/outlet" element={<OutletPage />} />
@@ -38,7 +44,13 @@ function App() {
           <Route path="/account/Points" element={<Points />} />
           <Route path="/account/Coupon" element={<Coupon />} />
         </Routes>
-        <Navbar />
+
+        {/* Show Navbar only on specific routes */}
+        {showNavbar && (
+          <div>
+            <Navbar />
+          </div>
+        )}
       </div>
     </div>
   );
