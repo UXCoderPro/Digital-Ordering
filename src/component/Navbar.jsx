@@ -13,7 +13,7 @@ export default function Navbar() {
   const current = location.pathname;
 
   return (
-    <div className="fixed bottom-0 w-full  flex flex-col gap-0 justify-center items-center">
+    <div className="fixed bottom-0 w-full  flex flex-col gap-2 justify-center items-center">
       <nav className=" w-11/12 px-2 py-3 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.10)] bg-white border border-border rounded-lg border-solid flex items-center justify-between ">
         {navItems.map((item) => (
           <Link

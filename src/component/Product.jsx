@@ -1,8 +1,8 @@
-import React, { useRef, useEffect, useMemo, useState } from "react";
+import React, { useRef, useEffect, useState, useCallback } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import { AiOutlinePlus } from "react-icons/ai";
 import Quantity from "./Quantity";
-import { motion } from "framer-motion";
+
 import { Link } from "react-router-dom";
 
 import productInfo from "../data/ProductInfo";
@@ -32,13 +32,11 @@ const Product = ({ scrollToCategory }) => {
   const [activeProduct, setActiveProduct] = useState(null);
   const sectionRefs = useRef({});
 
-  const groupedProducts = useMemo(() => {
-    return productInfo.reduce((acc, item) => {
-      acc[item.category] = acc[item.category] || [];
-      acc[item.category].push(item);
-      return acc;
-    }, {});
-  }, []);
+  const groupedProducts = productInfo.reduce((acc, item) => {
+    acc[item.category] = acc[item.category] || [];
+    acc[item.category].push(item);
+    return acc;
+  }, {});
 
   useEffect(() => {
     if (scrollToCategory && sectionRefs.current[scrollToCategory]) {
@@ -49,23 +47,26 @@ const Product = ({ scrollToCategory }) => {
     }
   }, [scrollToCategory]);
 
+  const setSectionRef = useCallback(
+    (category) => (el) => {
+      if (el) sectionRefs.current[category] = el;
+    },
+    []
+  );
+
   return (
     <div className="w-full flex flex-col gap-8 px-4 pt-5 pb-36 ">
       {Object.entries(groupedProducts).map(([category, items]) => (
-        <div key={category} ref={(el) => (sectionRefs.current[category] = el)}>
-          <div className="grid grid-cols-2 gap-4">
+        <div key={category} ref={setSectionRef(category)}>
+          <div className="grid grid-cols-2 gap-x-1 gap-y-4">
             {items.map((item, index) => {
               const type = item.type || "normal";
               const styles = backgroundColor[type];
               const isActive = activeProduct === item.name;
 
               return (
-                <Link to={`/ProductInfo/${item.id}`}>
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05, duration: 0.3 }}
+                <Link key={item.id} to={`/ProductInfo/${item.id}`}>
+                  <div
                     className={`flex flex-col h-80 justify-between items-center gap-2 border ${
                       isActive ? "border-primary border-2" : "border-border"
                     } border-solid rounded-2xl overflow-hidden cursor-pointer ${
@@ -109,7 +110,7 @@ const Product = ({ scrollToCategory }) => {
                       </p>
                       <IoIosArrowForward className={styles.costTxt} />
                     </div>
-                  </motion.div>
+                  </div>
                 </Link>
               );
             })}
