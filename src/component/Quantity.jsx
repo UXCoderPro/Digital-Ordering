@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const Quantity = ({ initial = 1, onChange, onDeactivate }) => {
   const [count, setCount] = useState(initial);
 
+  useEffect(() => {
+    onChange(count);
+  }, [onChange, count]);
+
   const handleDecrease = () => {
-    if (count > 1) {
-      const newCount = count - 1;
-      setCount(newCount);
-      onChange?.(newCount);
-    } else {
+    const newCount = Math.max(0, count - 1);
+    setCount(newCount);
+    if (newCount === 0) {
       onDeactivate?.();
     }
   };
 
   const handleIncrease = () => {
-    const newCount = count + 1;
-    setCount(newCount);
-    onChange?.(newCount);
+    setCount((prev) => prev + 1);
   };
 
   return (
@@ -28,7 +28,7 @@ const Quantity = ({ initial = 1, onChange, onDeactivate }) => {
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.9, y: 10 }}
         transition={{ duration: 0.2 }}
-        className="flex w-full h-10 justify-between items-center shrink-0 rounded-md border border-solid border-border bg-white overflow-hidden"
+        className="flex w-2/4 h-10 justify-between items-center shrink-0 rounded-md border border-solid border-border bg-white overflow-hidden"
       >
         <div
           className="h-full w-10 flex justify-center items-center border-r border-r-border border-solid bg-white p-1 cursor-pointer"
@@ -36,9 +36,11 @@ const Quantity = ({ initial = 1, onChange, onDeactivate }) => {
         >
           <AiOutlineMinus className="text-textDark" />
         </div>
+
         <h1 className="text-textDark font-sfDisplay text-sm font-medium leading-normal">
-          {count.toString().padStart(2, "0")}
+          {count}
         </h1>
+
         <div
           className="h-full w-10 flex justify-center items-center border-l border-l-border border-solid bg-primary p-1 cursor-pointer"
           onClick={handleIncrease}

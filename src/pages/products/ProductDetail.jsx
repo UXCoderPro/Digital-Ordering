@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState, useMemo } from "react";
 import productInfo from "../../data/ProductInfo";
 import { useParams, useNavigate } from "react-router-dom";
 import Icon from "../../component/account/Icon";
 import { VscChromeClose } from "react-icons/vsc";
 import { motion } from "framer-motion";
+import ProductNav from "../../component/productNav/ProductNav";
 
 const pageVariants = {
   initial: {
@@ -26,6 +27,42 @@ const ProductDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const product = productInfo.find((item) => item.id === parseInt(id));
+
+  // Add inside the component:
+  const basePrice = parseFloat(product.cost?.replace("$", "") || 0);
+  const [selectedModifiers, setSelectedModifiers] = useState({});
+  const [selectedCombos, setSelectedCombos] = useState({});
+  const [quantity, setQuantity] = useState(1);
+
+  // Modifier selection logic
+  const handleModifierSelect = (modifierName, option) => {
+    setSelectedModifiers((prev) => ({
+      ...prev,
+      [modifierName]: option,
+    }));
+  };
+
+  // Combo selection logic
+  const handleComboSelect = (comboIndex, option) => {
+    setSelectedCombos((prev) => ({
+      ...prev,
+      [comboIndex]: option,
+    }));
+  };
+
+  const totalPrice = useMemo(() => {
+    let total = basePrice;
+
+    Object.values(selectedModifiers).forEach((opt) => {
+      total += parseFloat(opt.price || 0);
+    });
+
+    Object.values(selectedCombos).forEach((opt) => {
+      total += parseFloat(opt.price || 0);
+    });
+
+    return (total * quantity).toFixed(2);
+  }, [selectedModifiers, selectedCombos, quantity, basePrice]); // add basePrice here
 
   if (!product) {
     return (
@@ -76,7 +113,12 @@ const ProductDetail = () => {
               {product.combo[0].options.map((option, index) => (
                 <div
                   key={index}
-                  className="flex gap-4 items-center border p-3 rounded-lg"
+                  onClick={() => handleComboSelect(0, option)}
+                  className={`flex gap-4 items-center border p-3 rounded-lg ${
+                    selectedCombos[0]?.name === option.name
+                      ? "border-primary"
+                      : "border-border"
+                  }`}
                 >
                   <img
                     src={option.cover}
@@ -104,7 +146,12 @@ const ProductDetail = () => {
                   {modifier.options.map((opt, optIndex) => (
                     <div
                       key={optIndex}
-                      className="flex flex-col items-center border rounded-xl p-2"
+                      onClick={() => handleModifierSelect(modifier.name, opt)}
+                      className={`flex flex-col items-center border rounded-xl p-2 cursor-pointer ${
+                        selectedModifiers[modifier.name]?.name === opt.name
+                          ? "border-primary"
+                          : "border-border"
+                      }`}
                     >
                       <img
                         src={opt.cover}
@@ -126,6 +173,12 @@ const ProductDetail = () => {
             ))}
           </div>
         )}
+
+        <ProductNav
+          price={totalPrice}
+          quantity={quantity}
+          setQuantity={setQuantity}
+        />
       </div>
     </motion.div>
   );
